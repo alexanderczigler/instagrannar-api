@@ -9,40 +9,24 @@ try {
 
   var config = require('../ingr.config.json');
 
-  var host = 'api.instagram.com/v1/media/search?lat={lat}&lng={lng}&client_id={client_id}';
+  var host = 'https://api.instagram.com/v1/media/search?client_id={client_id}&lat={lat}&lng={lng}&distance=2000';
   host = host.replace('{lat}', req.params.lat);
   host = host.replace('{lng}', req.params.lng);
   host = host.replace('{client_id}', config.api.client_id);
 
-  var path = host.substr(host.indexOf("/", host.len));
-  host = host.substr(0, host.indexOf("/"));
+  var request = require("request");
+  request({
+    url: host,
+    json: true
+  }, function (error, response, body) {
 
-  var opt = {
-    'host': host,
-    'path': path,
-    'method': 'GET',
-    'agent': false,
-    'headers': { 'Access-Control-Allow-Origin': "*" }
-  };
-
-  var https = require('https');
-
-  https.get(opt, function(igResult){
-    var data = '';
-
-    igResult.on('data', function (chunk){
-      data += chunk;
-    });
-
-    igResult.on('end',function(){
-      var obj = JSON.parse(data);
-      res.send(obj);
-    })
-
+    if (!error && response.statusCode === 200) {
+      res.send(body);
+    }
   });
-
 }
 catch (e) {
+  console.log(e);
   res.end("error");
 }
 finally {
