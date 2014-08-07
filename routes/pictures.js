@@ -9,11 +9,11 @@ try {
 
   var config = require('../ingr.config.json');
 
-  var host = 'https://api.instagram.com/v1/media/search?client_id={client_id}&lat={lat}&lng={lng}&distance=2000';
+  var host = 'https://api.instagram.com/v1/media/search?client_id={client_id}&lat={lat}&lng={lng}&distance=500';
   host = host.replace('{lat}', req.params.lat);
   host = host.replace('{lng}', req.params.lng);
   host = host.replace('{client_id}', config.api.client_id);
-
+  console.log('meow?');
   var request = require("request");
   request({
     url: host,
@@ -23,6 +23,9 @@ try {
     if (!error && response.statusCode === 200) {
       res.send(body);
     }
+    else {
+      console.log('danger danger', response.statusCode);
+    }
   });
 }
 catch (e) {
@@ -30,6 +33,6 @@ catch (e) {
   res.end("error");
 }
 finally {
-  //next();
+  console.log('well...');
 }
 };
