@@ -16,9 +16,14 @@ module.exports = {
           callback(body);
         }
         else {
-          console.log(error);
-          console.log('Get pictures from instagram failed, here is why:', response.statusCode);
-          callback(response.statusCode);
+          if (error) {
+            console.log('Error', error);
+          }
+          
+          if (response) {
+            console.log('Status code', response.statusCode);
+          }
+          callback('instagramClient error');
         }
       });
   }
