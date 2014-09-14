@@ -36,7 +36,7 @@ app.options(/(.*)/, function(req, res, next) {
 });
 
 // Route: logs
-app.get('/pictures/:lng/:lat', pictures.byLocation);
+app.get('/pictures/:lng/:lat/:dst', pictures.byLocation);
 
 // Start.
 http.createServer(app).listen(app.get('port'), function(){
