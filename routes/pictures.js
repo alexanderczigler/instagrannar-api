@@ -13,10 +13,9 @@ try {
   host = host.replace('{lat}', req.params.lat);
   host = host.replace('{lng}', req.params.lng);
   host = host.replace('{dst}', req.params.dst);
-  //console.log(req.params.dst);
   host = host.replace('{client_id}', config.api.client_id);
-  //console.log('meow?');
-  var request = require("request");
+  
+  var request = require('request');
   request({
     url: host,
     json: true
@@ -32,7 +31,7 @@ try {
 }
 catch (e) {
   console.log(e);
-  res.end("error");
+  res.end('error');
 }
 finally {
   //console.log('well...');

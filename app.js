@@ -1,9 +1,8 @@
 var express = require('express');
-
-var pictures = require('./routes/pictures.js');
-
 var http = require('http');
 var path = require('path');
+
+var pictures = require('./routes/pictures.js');
 
 var app = express();
 
@@ -21,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
+  // NOTE: Is this really needed?
   app.use(express.errorHandler());
 }
 
