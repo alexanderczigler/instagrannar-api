@@ -7,7 +7,7 @@ module.exports = {
     res.setHeader('Content-Type', 'application/json');
 
     try {
-      instagramClient.getPictures(req.params.lat, req.params.lng, req.params.dst, function(data) {
+      instagramClient.getPictures(req.params.lat, req.params.lng, req.params.dst, req.params.accesstoken, function(data) {
         res.send(data);
       });      
     }

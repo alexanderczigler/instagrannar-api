@@ -2,12 +2,23 @@ var request = require('request');
 var config = require('./ingr.config.json');
 
 module.exports = {
-  getPictures: function(lat, lng, dst, callback) {
+  getPictures: function(lat, lng, dst, accesstoken, callback) {
+
     var host = 'https://api.instagram.com/v1/media/search?client_id={client_id}&lat={lat}&lng={lng}&distance={dst}';
+
+    if (accesstoken) {
+      if (accesstoken !== '-'){
+        host += "&access_token=" + accesstoken;
+      }
+    }
+
     host = host.replace('{client_id}', config.api.client_id);
     host = host.replace('{lat}', lat);
     host = host.replace('{lng}', lng);
     host = host.replace('{dst}', dst);
+
+    console.log('IG Request', host);
+
     request({
         url: host,
         json: true
