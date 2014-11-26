@@ -9,21 +9,7 @@ This is a restful API written to serve the web application. It is responsible fo
 * install node.js
 * check out the repository into a folder of your choise
 
+### Docker ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* docker build -t ilix/centos-ingr-api .
+* docker run -p 3000:3000 -d ilix/centos-ingr-api
