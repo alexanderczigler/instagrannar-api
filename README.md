@@ -13,3 +13,4 @@ This is a restful API written to serve the web application. It is responsible fo
 
 * docker build -t ilix/centos-ingr-api .
 * docker run -p 3000:3000 -d ilix/centos-ingr-api
+* access on http://<docker-host>:3000
