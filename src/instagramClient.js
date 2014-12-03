@@ -2,23 +2,7 @@ var request = require('request');
 var config = require('./ingr.config.json');
 
 module.exports = {
-  getPictures: function(lat, lng, dst, accesstoken, callback) {
-
-    var host = 'https://api.instagram.com/v1/media/search?client_id={client_id}&lat={lat}&lng={lng}&distance={dst}';
-
-    if (accesstoken) {
-      if (accesstoken !== '-'){
-        host += "&access_token=" + accesstoken;
-      }
-    }
-
-    host = host.replace('{client_id}', config.api.client_id);
-    host = host.replace('{lat}', lat);
-    host = host.replace('{lng}', lng);
-    host = host.replace('{dst}', dst);
-
-    console.log('IG Request', host);
-
+  request: function(host, callback) {
     request({
         url: host,
         json: true
@@ -27,14 +11,22 @@ module.exports = {
           callback(body);
         }
         else {
+          
+          var errObject = {
+            message: 'Error when accessing Instagram.'
+          };
+          
           if (error) {
-            console.log('Error', error);
+            errObject.error = error;
+            console.log('Error in instagramClient.request()', error);
           }
           
           if (response) {
-            console.log('Status code', response.statusCode);
+            errObject.statusCode = response.statusCode;
+            console.log('Error in instagramClient.request()', response.statusCode);
           }
-          callback('instagramClient error');
+          
+          callback(errObject);
         }
       });
   }
