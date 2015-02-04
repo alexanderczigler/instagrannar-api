@@ -32,7 +32,7 @@ app.options(/(.*)/, function(req, res, next) {
  * Routes.
  */
 app.get('/pictures/:id/:accesstoken', pictures.byId);
-app.get('/pictures/:lng/:lat/:dst/:accesstoken', pictures.byLocation);
+app.get('/pictures', pictures.byLocation);
 
 
 
