@@ -4,6 +4,11 @@ var instagramClient = require('../instagramClient');
 module.exports = {
   byLocation: function(req, res, next) {
 
+    if (!req.query) {
+      res.end('queryParametersMissing');
+      return;
+    }
+
     var minTs, maxTs, lat, lng, dst, accessToken;
 
     minTs = req.query.min_ts;
