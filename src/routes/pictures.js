@@ -49,6 +49,12 @@ module.exports = {
     }
   },
   byId: function(req, res, next) {
+
+    if (!req.params) {
+      res.end('queryParametersMissing');
+      return;
+    }
+
     res.setHeader('Content-Type', 'application/json');
 
     var host = 'https://api.instagram.com/v1/media/{id}?client_id={client_id}';
