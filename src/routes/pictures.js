@@ -3,16 +3,16 @@ var instagramClient = require('../instagramClient');
 
 module.exports = {
   byLocation: function(req, res, next) {
-    
+
     var minTs, maxTs, lat, lng, dst, accessToken;
-    
+
     minTs = req.query.min_ts;
     maxTs = req.query.max_ts;
     lat = req.query.lat;
     lng = req.query.lng;
-    dst = req.query.dst
+    dst = req.query.dst;
     accessToken = req.query.access_token;
-    
+
     res.setHeader('Content-Type', 'application/json');
 
     var host = 'https://api.instagram.com/v1/media/search?client_id={client_id}&lat={lat}&lng={lng}&distance={dst}';
@@ -22,7 +22,7 @@ module.exports = {
         host += "&access_token=" + accessToken;
       }
     }
-    
+
     if (minTs && maxTs) {
       host += "&min_timestamp=" + minTs;
       host += "&max_timestamp=" + maxTs;
@@ -56,7 +56,7 @@ module.exports = {
 
     host = host.replace('{client_id}', config.api.client_id);
     host = host.replace('{id}', req.params.id);
-    
+
     try {
       instagramClient.request(host, function(data) {
         res.send(data);
