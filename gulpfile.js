@@ -1,39 +1,34 @@
-var gulp = require('gulp'),
-  jshint = require('gulp-jshint'),
-  mocha = require('gulp-mocha'),
-  plumber = require('gulp-plumber'),
-  runSequence = require('run-sequence');
+'use strict'
 
-gulp.task('jshint', function () {
-  return gulp.src(['./**/*.js', '!./node_modules/**/*'])
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'));
-});
+var gulp = require('gulp')
+var mocha = require('gulp-mocha')
+var plumber = require('gulp-plumber')
+var runSequence = require('run-sequence')
 
 gulp.task('mocha', function () {
-  return gulp.src('./tests/**/*.js')
+  return gulp.src('./test/**/*.js')
     .pipe(plumber())
-    .pipe(mocha());
-});
+    .pipe(mocha())
+})
 
 gulp.task('mocha:integration', function () {
-  return gulp.src('./tests/integration/**/*.js')
+  return gulp.src('./test/integration/**/*.js')
     .pipe(plumber())
-    .pipe(mocha());
-});
+    .pipe(mocha())
+})
 
 gulp.task('mocha:unit', function () {
-  return gulp.src('./tests/unit/**/*.js')
+  return gulp.src('./test/unit/**/*.js')
     .pipe(plumber())
-    .pipe(mocha());
-});
+    .pipe(mocha())
+})
 
 gulp.task('test', function (cb) {
-  runSequence('jshint', 'mocha', cb);
-});
+  runSequence('mocha', cb)
+})
 
 gulp.task('watch', function () {
-  gulp.watch(['./**/*.js', '!./node_modules/**/*'], ['test']);
-});
+  gulp.watch(['./**/*.js', '!./node_modules/**/*'], ['test'])
+})
 
-gulp.task('default', ['test', 'watch']);
+gulp.task('default', ['test', 'watch'])

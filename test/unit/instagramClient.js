@@ -1,22 +1,24 @@
-var chai = require('chai'),
-  expect = chai.expect,
-  sinon = require('sinon'),
-  proxyquire = require('proxyquire');
+'use strict'
 
-chai.use(require('sinon-chai'));
+var chai = require('chai')
+var expect = chai.expect
+var sinon = require('sinon')
+var proxyquire = require('proxyquire')
 
-var request = sinon.stub();
+chai.use(require('sinon-chai'))
 
-var instagramClient = proxyquire(process.cwd() + '/instagramClient', {
+var request = sinon.stub()
+
+var instagramClient = proxyquire(process.cwd() + '/lib/instagramClient', {
   'request': request
-});
+})
 
 describe('instagramClient module', function () {
   it('has request() function', function () {
-    expect(instagramClient.request).to.be.a('function');
-  });
+    expect(instagramClient.request).to.be.a('function')
+  })
   it('calls request', function () {
-    instagramClient.request();
-    expect(request).calledOnce;
-  });
-});
+    instagramClient.request()
+    expect(request).calledOnce
+  })
+})
