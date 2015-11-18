@@ -6,7 +6,7 @@
  */
 var http = require('http');
 var express = require('express');
-var pictures = require('./routes/pictures.js');
+var pictures = require('./lib/routes/pictures.js');
 
 var app = express();
 app.set('port', 3000);
