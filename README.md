@@ -7,7 +7,7 @@ This is a restful API written to serve the web application. It is responsible fo
 ### How do I get set up? ###
 
 * install node.js
-* check out the repository into a folder of your choise
+* check out the repository into a folder of your choice
 
 ### Docker ###
 
