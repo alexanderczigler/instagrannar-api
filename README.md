@@ -6,11 +6,32 @@ This is a restful API written to serve the web application. It is responsible fo
 
 ### How do I get set up? ###
 
-* install node.js
-* check out the repository into a folder of your choice
+* install nvm
+* clone the repository into a folder of your choice
 
 ### Docker ###
 
-* docker build -t ilix/centos-ingr-api .
-* docker run -p 3000:3000 -d ilix/centos-ingr-api
-* access on http://<docker-host>:3000
+```
+docker build -t ingr-api .
+docker run -p 3000:3000 -d ingr-api
+```
+
+Access on http://<docker-host>:3000
+
+### docker-compose ###
+
+```
+docker-machine up
+```
+
+### Run locally (for dev etc.) ###
+
+```
+nvm install stable
+nvm use stable
+npm install -g nodemon
+npm install
+npm start
+```
+
+Open http://localhost:3000
