@@ -2,7 +2,7 @@
 
 ### What is this repository for? ###
 
-This is a restful API written to serve the web application. It is responsible for communicating with the Instagram API and deliver curated data to user's web browsers on demand.
+This is a restful API written to serve the web and mobile applications. It is responsible for communicating with the Instagram API and deliver curated data to user's web browsers on demand.
 
 ### How do I get set up? ###
 
