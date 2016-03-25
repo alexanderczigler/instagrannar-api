@@ -1,3 +1,4 @@
-docker build -t ingr-api .
-docker tag -f ingr-api tutum.co/instagrannar/ingr-api
-docker push tutum.co/instagrannar/ingr-api
+#!/bin/sh
+docker build -t instagrannar-api .
+docker tag -f instagrannar-api instagrannar/api
+docker push instagrannar/api
