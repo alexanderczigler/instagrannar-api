@@ -1,18 +1,20 @@
 'use strict'
 
+/*
 require('./lib/adapters/db').init({
   host: '192.168.99.100',
   port: 28015,
   db: 'instagrannar',
   discovery: false
 })
+*/
 
 var http = require('http')
 var express = require('express')
 var pictures = require('./lib/routes/pictures.js')
 
 var app = express()
-app.set('port', 3000)
+app.set('port', process.env.PORT || 3000)
 
 app.all('/*', function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')
